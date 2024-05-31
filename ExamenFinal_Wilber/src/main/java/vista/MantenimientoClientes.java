@@ -5,8 +5,8 @@
  */
 package vista;
 
-import modelo.FacultadesDAO;
-import controlador.Facultades;
+import modelo.ClientesDAO;
+import controlador.Clientes;
 
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -20,7 +20,7 @@ import controlador.clsUsuarioConectado;
  *
  * @author visitante
  */
-public class MantenimientoFacultades extends javax.swing.JInternalFrame {
+public class MantenimientoClientes extends javax.swing.JInternalFrame {
 
         int codigoAplicacion = 2040;
             clsBitacora Auditoria = new clsBitacora();
@@ -42,8 +42,8 @@ public class MantenimientoFacultades extends javax.swing.JInternalFrame {
         modelo.addColumn("Telefono");
         modelo.addColumn("Decano");
         modelo.addColumn("Estatus");
-        FacultadesDAO facultadesDAO = new FacultadesDAO();
-        List<Facultades> facultades = facultadesDAO.select();
+        ClientesDAO facultadesDAO = new ClientesDAO();
+        List<Clientes> facultades = facultadesDAO.select();
         tablaVendedores.setModel(modelo);
         String[] dato = new String[6];
         for (int i = 0; i < facultades.size(); i++) {
@@ -58,8 +58,8 @@ public class MantenimientoFacultades extends javax.swing.JInternalFrame {
     }
 
     public void buscarFacultades() {
-        Facultades facultadAConsultar = new Facultades();
-        FacultadesDAO facultadDAO = new FacultadesDAO();
+        Clientes facultadAConsultar = new Clientes();
+        ClientesDAO facultadDAO = new ClientesDAO();
         facultadAConsultar.setCodigo_facultad(txtbuscado.getText());
         facultadAConsultar = facultadDAO.query(facultadAConsultar);
         txtCodigoFacultad.setText(facultadAConsultar.getCodigo_facultad());
@@ -70,7 +70,7 @@ public class MantenimientoFacultades extends javax.swing.JInternalFrame {
         mnuEstadoFacultad.setSelectedItem(facultadAConsultar.getEstatus_facultad());
     }
 
-    public MantenimientoFacultades() {
+    public MantenimientoClientes() {
         initComponents();
         llenadoDeTablas();
 
@@ -118,7 +118,7 @@ public class MantenimientoFacultades extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Mantenimiento Facultades");
+        setTitle("Mantenimiento Clientes");
         setVisible(true);
 
         btnEliminar.setText("Eliminar");
@@ -344,8 +344,8 @@ public class MantenimientoFacultades extends javax.swing.JInternalFrame {
     
     if (opcion == JOptionPane.OK_OPTION) {
         // El usuario ha confirmado la eliminación, proceder con la eliminación
-        FacultadesDAO facultadesDAO = new FacultadesDAO();
-        Facultades facultadesAEliminar = new Facultades();
+        ClientesDAO facultadesDAO = new ClientesDAO();
+        Clientes facultadesAEliminar = new Clientes();
         facultadesAEliminar.setCodigo_facultad(txtbuscado.getText());
         facultadesDAO.delete(facultadesAEliminar);
         llenadoDeTablas();
@@ -355,8 +355,8 @@ public class MantenimientoFacultades extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-    FacultadesDAO facultadesDAO = new FacultadesDAO();
-    Facultades facultadesAInsertar = new Facultades();
+    ClientesDAO facultadesDAO = new ClientesDAO();
+    Clientes facultadesAInsertar = new Clientes();
     facultadesAInsertar.setCodigo_facultad(txtCodigoFacultad.getText());
     facultadesAInsertar.setNombre_facultad(txtNombreFacultad.getText());
     facultadesAInsertar.setUbicacion_facultad(txtUbicacionFacultad.getText());
@@ -384,8 +384,8 @@ public class MantenimientoFacultades extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-    FacultadesDAO facultadesDAO = new FacultadesDAO();
-    Facultades facultadesAActualizar = new Facultades();
+    ClientesDAO facultadesDAO = new ClientesDAO();
+    Clientes facultadesAActualizar = new Clientes();
     facultadesAActualizar.setCodigo_facultad(txtbuscado.getText());
     facultadesAActualizar.setNombre_facultad(txtNombreFacultad.getText());
     facultadesAActualizar.setUbicacion_facultad(txtUbicacionFacultad.getText());

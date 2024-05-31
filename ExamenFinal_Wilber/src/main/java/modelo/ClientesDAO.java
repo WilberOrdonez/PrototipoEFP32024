@@ -1,6 +1,7 @@
+
 package modelo;
 
-import controlador.Facultades;
+import controlador.Clientes;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,7 +12,7 @@ import java.util.List;
 /**
  * Clase encargada de interactuar con la tabla de facultades en la base de datos
  */
-public class FacultadesDAO {
+public class ClientesDAO {
 
     private static final String SQL_SELECT = "SELECT codigo_facultad, nombre_facultad, ubicacion_facultad, telefono_facultad, decano_facultad, estatus_facultad FROM facultades";
     private static final String SQL_INSERT = "INSERT INTO facultades(codigo_facultad, nombre_facultad, ubicacion_facultad, telefono_facultad, decano_facultad, estatus_facultad) VALUES(?, ?, ?, ?, ?, ?)";
@@ -19,12 +20,12 @@ public class FacultadesDAO {
     private static final String SQL_DELETE = "DELETE FROM facultades WHERE codigo_facultad=?";
     private static final String SQL_QUERY = "SELECT codigo_facultad, nombre_facultad, ubicacion_facultad, telefono_facultad, decano_facultad, estatus_facultad FROM facultades WHERE codigo_facultad = ?";
 
-    public List<Facultades> select() {
+    public List<Clientes> select() {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        Facultades facultad = null;
-        List<Facultades> facultades = new ArrayList<>();
+        Clientes facultad = null;
+        List<Clientes> facultades = new ArrayList<>();
 
         try {
             conn = Conexion.getConnection();
@@ -38,7 +39,7 @@ public class FacultadesDAO {
                 String decano = rs.getString("decano_facultad");
                 String estatus = rs.getString("estatus_facultad");
 
-                facultad = new Facultades();
+                facultad = new Clientes();
                 facultad.setCodigo_facultad(codigo);
                 facultad.setNombre_facultad(nombre);
                 facultad.setUbicacion_facultad(ubicacion);
@@ -60,7 +61,7 @@ public class FacultadesDAO {
         return facultades;
     }
 
-    public int insert(Facultades facultad) {
+    public int insert(Clientes facultad) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
@@ -86,7 +87,7 @@ public class FacultadesDAO {
         return rows;
     }
 
-    public int update(Facultades facultad) {
+    public int update(Clientes facultad) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
@@ -114,7 +115,7 @@ public class FacultadesDAO {
         return rows;
     }
 
-    public int delete(Facultades facultad) {
+    public int delete(Clientes facultad) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
@@ -136,7 +137,7 @@ public class FacultadesDAO {
         return rows;
     }
 
-    public Facultades query(Facultades facultad) {
+    public Clientes query(Clientes facultad) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -156,7 +157,7 @@ public class FacultadesDAO {
                 String decano = rs.getString("decano_facultad");
                 String estatus = rs.getString("estatus_facultad");
 
-                facultad = new Facultades();
+                facultad = new Clientes();
                 facultad.setCodigo_facultad(codigo);
                 facultad.setNombre_facultad(nombre);
                 facultad.setUbicacion_facultad(ubicacion);
@@ -175,3 +176,4 @@ public class FacultadesDAO {
         return facultad;
     }
 }
+

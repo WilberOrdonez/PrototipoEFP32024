@@ -5,7 +5,7 @@ package controlador;
  * Fecha y hora de creacion: 07/05/2024 01:36 AM
  * Clase encargada de FACULTADES
  */
-public class Facultades {
+public class Clientes {
     private String codigo_facultad;
     private String nombre_facultad;
     private String ubicacion_facultad;
@@ -13,7 +13,7 @@ public class Facultades {
     private String decano_facultad;
     private String estatus_facultad;
     
-    public Facultades() {
+    public Clientes() {
     }
     
     @Override
@@ -69,29 +69,29 @@ public class Facultades {
         this.estatus_facultad = estatus_facultad;
     }
     
-    public Facultades(String codigo_facultad){
+    public Clientes(String codigo_facultad){
         this.codigo_facultad = codigo_facultad;
     }
     
-    public Facultades(String codigo_facultad, String nombre_facultad){
+    public Clientes(String codigo_facultad, String nombre_facultad){
         this.codigo_facultad = codigo_facultad;
         this.nombre_facultad = nombre_facultad;
     }
     
-    public Facultades(String codigo_facultad, String nombre_facultad, String ubicacion_facultad){
+    public Clientes(String codigo_facultad, String nombre_facultad, String ubicacion_facultad){
         this.codigo_facultad = codigo_facultad;
         this.nombre_facultad = nombre_facultad;
         this.ubicacion_facultad = ubicacion_facultad;
     }
     
-    public Facultades(String codigo_facultad, String nombre_facultad, String ubicacion_facultad, String telefono_facultad){
+    public Clientes(String codigo_facultad, String nombre_facultad, String ubicacion_facultad, String telefono_facultad){
         this.codigo_facultad = codigo_facultad;
         this.nombre_facultad = nombre_facultad;
         this.ubicacion_facultad = ubicacion_facultad;
         this.telefono_facultad = telefono_facultad;
     }
     
-    public Facultades(String codigo_facultad, String nombre_facultad, String ubicacion_facultad, String telefono_facultad, String decano_facultad){
+    public Clientes(String codigo_facultad, String nombre_facultad, String ubicacion_facultad, String telefono_facultad, String decano_facultad){
         this.codigo_facultad = codigo_facultad;
         this.nombre_facultad = nombre_facultad;
         this.ubicacion_facultad = ubicacion_facultad;
@@ -99,7 +99,7 @@ public class Facultades {
         this.decano_facultad = decano_facultad;
     }
     
-    public Facultades(String codigo_facultad, String nombre_facultad, String ubicacion_facultad, String telefono_facultad, String decano_facultad, String estatus_facultad){
+    public Clientes(String codigo_facultad, String nombre_facultad, String ubicacion_facultad, String telefono_facultad, String decano_facultad, String estatus_facultad){
         this.codigo_facultad = codigo_facultad;
         this.nombre_facultad = nombre_facultad;
         this.ubicacion_facultad = ubicacion_facultad;
