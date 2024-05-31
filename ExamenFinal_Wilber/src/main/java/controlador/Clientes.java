@@ -1,110 +1,176 @@
 package controlador;
 
-/**
- * Clase creada por WILBER ORDOÑEZ
- * Fecha y hora de creacion: 07/05/2024 01:36 AM
- * Clase encargada de FACULTADES
- */
+
 public class Clientes {
-    private String codigo_facultad;
-    private String nombre_facultad;
-    private String ubicacion_facultad;
-    private String telefono_facultad;
-    private String decano_facultad;
-    private String estatus_facultad;
+    private String pkid;
+    private String nombre;
+    private String idTipo;
+    private String apellido; 
+    private String nit;
+    private String telefono;
+    private String direccion;
+    private String correo;
+    private String estatus;
     
     public Clientes() {
     }
     
     @Override
     public String toString() {
-        return "Facultades{" + "codigo_facultad=" + codigo_facultad + ", nombre_facultad=" + nombre_facultad + ", ubicacion_facultad=" + ubicacion_facultad + ", telefono_facultad=" + telefono_facultad + ", decano_facultad=" + decano_facultad + ", estatus_facultad=" + estatus_facultad + '}';
+        return "Cliente{" +
+                "pkid='" + pkid + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", idTipo='" + idTipo + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", nit='" + nit + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", correo='" + correo + '\'' +
+                ", estatus='" + estatus + '\'' +
+                '}';
     }
     
-    public String getCodigo_facultad() {
-        return codigo_facultad;
+    public String getPkid() {
+        return pkid;
     }
 
-    public void setCodigo_facultad(String codigo_facultad) {
-        this.codigo_facultad = codigo_facultad;
+    public void setPkid(String pkid) {
+        this.pkid = pkid;
     }
 
-    public String getNombre_facultad() {
-        return nombre_facultad;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombre_facultad(String nombre_facultad) {
-        this.nombre_facultad = nombre_facultad;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public String getUbicacion_facultad() {
-        return ubicacion_facultad;
+    public String getIdTipo() {
+        return idTipo;
     }
 
-    public void setUbicacion_facultad(String ubicacion_facultad) {
-        this.ubicacion_facultad = ubicacion_facultad;
+    public void setIdTipo(String idTipo) {
+        this.idTipo = idTipo;
     }
 
-    public String getTelefono_facultad() {
-        return telefono_facultad;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setTelefono_facultad(String telefono_facultad) {
-        this.telefono_facultad = telefono_facultad;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
-    public String getDecano_facultad() {
-        return decano_facultad;
+    public String getNit() {
+        return nit;
     }
 
-    public void setDecano_facultad(String decano_facultad) {
-        this.decano_facultad = decano_facultad;
+    public void setNit(String nit) {
+        this.nit = nit;
     }
 
-    public String getEstatus_facultad() {
-        return estatus_facultad;
+    public String getTelefono() {
+        return telefono;
     }
 
-    public void setEstatus_facultad(String estatus_facultad) {
-        this.estatus_facultad = estatus_facultad;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
-    
-    public Clientes(String codigo_facultad){
-        this.codigo_facultad = codigo_facultad;
+
+    public String getDireccion() {
+        return direccion;
     }
-    
-    public Clientes(String codigo_facultad, String nombre_facultad){
-        this.codigo_facultad = codigo_facultad;
-        this.nombre_facultad = nombre_facultad;
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
-    
-    public Clientes(String codigo_facultad, String nombre_facultad, String ubicacion_facultad){
-        this.codigo_facultad = codigo_facultad;
-        this.nombre_facultad = nombre_facultad;
-        this.ubicacion_facultad = ubicacion_facultad;
+
+    public String getCorreo() {
+        return correo;
     }
-    
-    public Clientes(String codigo_facultad, String nombre_facultad, String ubicacion_facultad, String telefono_facultad){
-        this.codigo_facultad = codigo_facultad;
-        this.nombre_facultad = nombre_facultad;
-        this.ubicacion_facultad = ubicacion_facultad;
-        this.telefono_facultad = telefono_facultad;
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
-    
-    public Clientes(String codigo_facultad, String nombre_facultad, String ubicacion_facultad, String telefono_facultad, String decano_facultad){
-        this.codigo_facultad = codigo_facultad;
-        this.nombre_facultad = nombre_facultad;
-        this.ubicacion_facultad = ubicacion_facultad;
-        this.telefono_facultad = telefono_facultad;
-        this.decano_facultad = decano_facultad;
+
+    public String getEstatus() {
+        return estatus;
     }
-    
-    public Clientes(String codigo_facultad, String nombre_facultad, String ubicacion_facultad, String telefono_facultad, String decano_facultad, String estatus_facultad){
-        this.codigo_facultad = codigo_facultad;
-        this.nombre_facultad = nombre_facultad;
-        this.ubicacion_facultad = ubicacion_facultad;
-        this.telefono_facultad = telefono_facultad;
-        this.decano_facultad = decano_facultad;
-        this.estatus_facultad = estatus_facultad;
+
+    public void setEstatus(String estatus) {
+        this.estatus = estatus;
+    }
+
+    public Clientes(String pkid) {
+        this.pkid = pkid;
+    }
+
+    public Clientes(String pkid, String nombre) {
+        this.pkid = pkid;
+        this.nombre = nombre;
+    }
+
+    public Clientes(String pkid, String nombre, String idTipo) {
+        this.pkid = pkid;
+        this.nombre = nombre;
+        this.idTipo = idTipo;
+    }
+
+    public Clientes(String pkid, String nombre, String idTipo, String apellido) {
+        this.pkid = pkid;
+        this.nombre = nombre;
+        this.idTipo = idTipo;
+        this.apellido = apellido;
+    }
+
+    public Clientes(String pkid, String nombre, String idTipo, String apellido, String nit) {
+        this.pkid = pkid;
+        this.nombre = nombre;
+        this.idTipo = idTipo;
+        this.apellido = apellido;
+        this.nit = nit;
+    }
+
+    public Clientes(String pkid, String nombre, String idTipo, String apellido, String nit, String telefono) {
+        this.pkid = pkid;
+        this.nombre = nombre;
+        this.idTipo = idTipo;
+        this.apellido = apellido;
+        this.nit = nit;
+        this.telefono = telefono;
+    }
+
+    public Clientes(String pkid, String nombre, String idTipo, String apellido, String nit, String telefono, String direccion) {
+        this.pkid = pkid;
+        this.nombre = nombre;
+        this.idTipo = idTipo;
+        this.apellido = apellido;
+        this.nit = nit;
+        this.telefono = telefono;
+        this.direccion = direccion;
+    }
+
+    public Clientes(String pkid, String nombre, String idTipo, String apellido, String nit, String telefono, String direccion, String correo) {
+        this.pkid = pkid;
+        this.nombre = nombre;
+        this.idTipo = idTipo;
+        this.apellido = apellido;
+        this.nit = nit;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.correo = correo;
+    }
+
+    public Clientes(String pkid, String nombre, String idTipo, String apellido, String nit, String telefono, String direccion, String correo, String estatus) {
+        this.pkid = pkid;
+        this.nombre = nombre;
+        this.idTipo = idTipo;
+        this.apellido = apellido;
+        this.nit = nit;
+        this.telefono = telefono;
+        this.direccion = direccion;
+        this.correo = correo;
+        this.estatus = estatus;
     }
 }

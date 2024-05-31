@@ -1,4 +1,3 @@
-
 package modelo;
 
 import controlador.Clientes;
@@ -10,44 +9,50 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Clase encargada de interactuar con la tabla de facultades en la base de datos
+ * Clase encargada de interactuar con la tabla de clientes en la base de datos
  */
 public class ClientesDAO {
 
-    private static final String SQL_SELECT = "SELECT codigo_facultad, nombre_facultad, ubicacion_facultad, telefono_facultad, decano_facultad, estatus_facultad FROM facultades";
-    private static final String SQL_INSERT = "INSERT INTO facultades(codigo_facultad, nombre_facultad, ubicacion_facultad, telefono_facultad, decano_facultad, estatus_facultad) VALUES(?, ?, ?, ?, ?, ?)";
-    private static final String SQL_UPDATE = "UPDATE facultades SET nombre_facultad=?, ubicacion_facultad=?, telefono_facultad=?, decano_facultad=?, estatus_facultad=? WHERE codigo_facultad = ?";
-    private static final String SQL_DELETE = "DELETE FROM facultades WHERE codigo_facultad=?";
-    private static final String SQL_QUERY = "SELECT codigo_facultad, nombre_facultad, ubicacion_facultad, telefono_facultad, decano_facultad, estatus_facultad FROM facultades WHERE codigo_facultad = ?";
+    private static final String SQL_SELECT = "SELECT pkid, nombre, idTipo, apellido, nit, telefono, direccion, correo, estatus FROM cliente";
+    private static final String SQL_INSERT = "INSERT INTO cliente(pkid, nombre, idTipo, apellido, nit, telefono, direccion, correo, estatus) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String SQL_UPDATE = "UPDATE cliente SET nombre=?, idTipo=?, apellido=?, nit=?, telefono=?, direccion=?, correo=?, estatus=? WHERE pkid = ?";
+    private static final String SQL_DELETE = "DELETE FROM cliente WHERE pkid=?";
+    private static final String SQL_QUERY = "SELECT pkid, nombre, idTipo, apellido, nit, telefono, direccion, correo, estatus FROM cliente WHERE pkid = ?";
 
     public List<Clientes> select() {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
-        Clientes facultad = null;
-        List<Clientes> facultades = new ArrayList<>();
+        Clientes cliente = null;
+        List<Clientes> clientes = new ArrayList<>();
 
         try {
             conn = Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_SELECT);
             rs = stmt.executeQuery();
             while (rs.next()) {
-                String codigo = rs.getString("codigo_facultad");
-                String nombre = rs.getString("nombre_facultad");
-                String ubicacion = rs.getString("ubicacion_facultad");
-                String telefono = rs.getString("telefono_facultad");
-                String decano = rs.getString("decano_facultad");
-                String estatus = rs.getString("estatus_facultad");
+                String pkid = rs.getString("pkid");
+                String nombre = rs.getString("nombre");
+                String idTipo = rs.getString("idTipo");
+                String apellido = rs.getString("apellido");
+                String nit = rs.getString("nit");
+                String telefono = rs.getString("telefono");
+                String direccion = rs.getString("direccion");
+                String correo = rs.getString("correo");
+                String estatus = rs.getString("estatus");
 
-                facultad = new Clientes();
-                facultad.setCodigo_facultad(codigo);
-                facultad.setNombre_facultad(nombre);
-                facultad.setUbicacion_facultad(ubicacion);
-                facultad.setTelefono_facultad(telefono);
-                facultad.setDecano_facultad(decano);
-                facultad.setEstatus_facultad(estatus);
+                cliente = new Clientes();
+                cliente.setPkid(pkid);
+                cliente.setNombre(nombre);
+                cliente.setIdTipo(idTipo);
+                cliente.setApellido(apellido);
+                cliente.setNit(nit);
+                cliente.setTelefono(telefono);
+                cliente.setDireccion(direccion);
+                cliente.setCorreo(correo);
+                cliente.setEstatus(estatus);
 
-                facultades.add(facultad);
+                clientes.add(cliente);
             }
 
         } catch (SQLException ex) {
@@ -58,22 +63,25 @@ public class ClientesDAO {
             Conexion.close(conn);
         }
 
-        return facultades;
+        return clientes;
     }
 
-    public int insert(Clientes facultad) {
+    public int insert(Clientes cliente) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
         try {
             conn = Conexion.getConnection();
             stmt = conn.prepareStatement(SQL_INSERT);
-            stmt.setString(1, facultad.getCodigo_facultad());
-            stmt.setString(2, facultad.getNombre_facultad());
-            stmt.setString(3, facultad.getUbicacion_facultad());
-            stmt.setString(4, facultad.getTelefono_facultad());
-            stmt.setString(5, facultad.getDecano_facultad());
-            stmt.setString(6, facultad.getEstatus_facultad());
+            stmt.setString(1, cliente.getPkid());
+            stmt.setString(2, cliente.getNombre());
+            stmt.setString(3, cliente.getIdTipo());
+            stmt.setString(4, cliente.getApellido());
+            stmt.setString(5, cliente.getNit());
+            stmt.setString(6, cliente.getTelefono());
+            stmt.setString(7, cliente.getDireccion());
+            stmt.setString(8, cliente.getCorreo());
+            stmt.setString(9, cliente.getEstatus());
             System.out.println("Ejecutando query: " + SQL_INSERT);
             rows = stmt.executeUpdate();
             System.out.println("Registros afectados: " + rows);
@@ -87,7 +95,7 @@ public class ClientesDAO {
         return rows;
     }
 
-    public int update(Clientes facultad) {
+    public int update(Clientes cliente) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
@@ -96,12 +104,15 @@ public class ClientesDAO {
             conn = Conexion.getConnection();
             System.out.println("Ejecutando query: " + SQL_UPDATE);
             stmt = conn.prepareStatement(SQL_UPDATE);
-            stmt.setString(1, facultad.getNombre_facultad());
-            stmt.setString(2, facultad.getUbicacion_facultad());
-            stmt.setString(3, facultad.getTelefono_facultad());
-            stmt.setString(4, facultad.getDecano_facultad());
-            stmt.setString(5, facultad.getEstatus_facultad());
-            stmt.setString(6, facultad.getCodigo_facultad());
+            stmt.setString(1, cliente.getNombre());
+            stmt.setString(2, cliente.getIdTipo());
+            stmt.setString(3, cliente.getApellido());
+            stmt.setString(4, cliente.getNit());
+            stmt.setString(5, cliente.getTelefono());
+            stmt.setString(6, cliente.getDireccion());
+            stmt.setString(7, cliente.getCorreo());
+            stmt.setString(8, cliente.getEstatus());
+            stmt.setString(9, cliente.getPkid());
             rows = stmt.executeUpdate();
             System.out.println("Registros actualizados: " + rows);
 
@@ -115,7 +126,7 @@ public class ClientesDAO {
         return rows;
     }
 
-    public int delete(Clientes facultad) {
+    public int delete(Clientes cliente) {
         Connection conn = null;
         PreparedStatement stmt = null;
         int rows = 0;
@@ -124,7 +135,7 @@ public class ClientesDAO {
             conn = Conexion.getConnection();
             System.out.println("Ejecutando query: " + SQL_DELETE);
             stmt = conn.prepareStatement(SQL_DELETE);
-            stmt.setString(1, facultad.getCodigo_facultad());
+            stmt.setString(1, cliente.getPkid());
             rows = stmt.executeUpdate();
             System.out.println("Registros eliminados: " + rows);
         } catch (SQLException ex) {
@@ -137,7 +148,7 @@ public class ClientesDAO {
         return rows;
     }
 
-    public Clientes query(Clientes facultad) {
+    public Clientes query(Clientes cliente) {
         Connection conn = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -146,25 +157,29 @@ public class ClientesDAO {
             conn = Conexion.getConnection();
             System.out.println("Ejecutando query: " + SQL_QUERY);
             stmt = conn.prepareStatement(SQL_QUERY);
-            stmt.setString(1, facultad.getCodigo_facultad());
+            stmt.setString(1, cliente.getPkid());
             rs = stmt.executeQuery();
-            while (rs.next()) {
+            if (rs.next()) {
+                String pkid = rs.getString("pkid");
+                String nombre = rs.getString("nombre");
+                String idTipo = rs.getString("idTipo");
+                String apellido = rs.getString("apellido");
+                String nit = rs.getString("nit");
+                String telefono = rs.getString("telefono");
+                String direccion = rs.getString("direccion");
+                String correo = rs.getString("correo");
+                String estatus = rs.getString("estatus");
 
-                String codigo = rs.getString("codigo_facultad");
-                String nombre = rs.getString("nombre_facultad");
-                String ubicacion = rs.getString("ubicacion_facultad");
-                String telefono = rs.getString("telefono_facultad");
-                String decano = rs.getString("decano_facultad");
-                String estatus = rs.getString("estatus_facultad");
-
-                facultad = new Clientes();
-                facultad.setCodigo_facultad(codigo);
-                facultad.setNombre_facultad(nombre);
-                facultad.setUbicacion_facultad(ubicacion);
-                facultad.setTelefono_facultad(telefono);
-                facultad.setDecano_facultad(decano);
-                facultad.setEstatus_facultad(estatus);
-
+                cliente = new Clientes();
+                cliente.setPkid(pkid);
+                cliente.setNombre(nombre);
+                cliente.setIdTipo(idTipo);
+                cliente.setApellido(apellido);
+                cliente.setNit(nit);
+                cliente.setTelefono(telefono);
+                cliente.setDireccion(direccion);
+                cliente.setCorreo(correo);
+                cliente.setEstatus(estatus);
             }
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);
@@ -173,7 +188,6 @@ public class ClientesDAO {
             Conexion.close(stmt);
             Conexion.close(conn);
         }
-        return facultad;
+        return cliente;
     }
 }
-
